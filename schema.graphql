@@ -1,0 +1,36 @@
+type WalletFactory @entity {
+  id: ID!
+  wallets: [Wallet!]! @derivedFrom(field: "factory")
+}
+
+type Wallet @entity {
+  id: ID!
+  factory: WalletFactory!
+  balance: BigInt
+}
+
+type Summary @entity {
+  id: ID!
+  walletCount: BigInt
+  txCount: BigInt
+  feePaid: BigDecimal
+  feeCollected: BigDecimal
+  currentBlock: BigInt
+  totalBalance: BigDecimal
+}
+
+type Transaction @entity {
+  id: ID!
+  blockNumber: BigInt,
+  blockTime: BigInt,
+  from: Bytes,
+  to: Bytes,
+  value: BigInt,
+  data: Bytes,
+  gasUsed: BigInt,
+  gasPrice: BigInt,
+  refundAddress: Bytes,
+  refundFee: BigInt,
+  isMeta: Boolean,
+  metaSuccess: Boolean
+}

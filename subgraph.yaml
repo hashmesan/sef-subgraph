@@ -1,0 +1,94 @@
+specVersion: 0.0.2
+description: SefWallet Subgraph
+repository: https://github.com/hashmesan/sefwallet_subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: WalletFactory
+    network: mainnet
+    source:
+      abi: WalletFactory
+      startBlock: 10
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mapping/factory.ts
+      entities:
+        - WalletFactory
+        - Summary
+      abis:
+        - name: WalletFactory
+          file: ./abis/WalletFactory.json
+      eventHandlers:
+        - event: WalletCreated(address,address)
+          handler: onWalletCreated
+
+  - kind: ethereum/contract
+    name: OldWallet
+    network: mainnet
+    source:
+      abi: TOTPWallet
+      startBlock: 10    
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mapping/wallet.ts
+      entities:
+        - Wallet
+        - Summary
+      abis:
+        - name: TOTPWallet
+          file: ./abis/TOTPWallet_old.json        
+      eventHandlers:
+        - event: TransactionExecuted(indexed bool,bytes,bytes32)
+          handler: onMetaTransaction2
+
+  - kind: ethereum/contract
+    name: Wallet
+    network: mainnet
+    source:
+      abi: TOTPWallet
+      startBlock: 10
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mapping/wallet.ts
+      entities:
+        - Wallet
+        - Summary
+      abis:
+        - name: TOTPWallet
+          file: ./abis/TOTPWallet.json
+      eventHandlers:
+        - event: TransactionExecuted(indexed bool,bytes,bytes32,address,uint256)
+          handler: onMetaTransaction
+        - event: Initialized(address,address,uint256)
+          handler: onInitialized
+        - event: Deposit(indexed address,uint256)
+          handler: onDeposit
+        - event: Invoked(indexed address,indexed uint256,bytes,bool,bytes)
+          handler: onInvoked
+
+  - kind: ethereum/contract
+    name: Block
+    network: mainnet
+    source:
+      abi: TOTPWallet
+      address: "0x4595D704aF3aaD3FB98bF2C60dA9D604e08e61d4"
+      startBlock: 10
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mapping/wallet.ts
+      entities:
+        - Summary
+      abis:
+        - name: TOTPWallet
+          file: ./abis/TOTPWallet.json
+      blockHandlers:
+        - handler: handleBlock
