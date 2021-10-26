@@ -5,6 +5,26 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
+    name: Block
+    network: mainnet
+    source:
+      abi: TOTPWallet
+      address: "0x4595D704aF3aaD3FB98bF2C60dA9D604e08e61d4"
+      startBlock: 10
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mapping/wallet.ts
+      entities:
+        - Summary
+      abis:
+        - name: TOTPWallet
+          file: ./abis/TOTPWallet.json
+      blockHandlers:
+        - handler: handleBlock
+
+  - kind: ethereum/contract
     name: WalletFactory
     network: mainnet
     source:
@@ -24,13 +44,12 @@ dataSources:
       eventHandlers:
         - event: WalletCreated(address,address)
           handler: onWalletCreated
-
+templates:
   - kind: ethereum/contract
     name: OldWallet
     network: mainnet
     source:
       abi: TOTPWallet
-      startBlock: 10    
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -46,12 +65,11 @@ dataSources:
         - event: TransactionExecuted(indexed bool,bytes,bytes32)
           handler: onMetaTransaction2
 
-  - kind: ethereum/contract
-    name: Wallet
+  - name: WalletTemplate
+    kind: ethereum/contract
     network: mainnet
     source:
       abi: TOTPWallet
-      startBlock: 10
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -59,7 +77,6 @@ dataSources:
       file: ./src/mapping/wallet.ts
       entities:
         - Wallet
-        - Summary
       abis:
         - name: TOTPWallet
           file: ./abis/TOTPWallet.json
@@ -73,22 +90,4 @@ dataSources:
         - event: Invoked(indexed address,indexed uint256,bytes,bool,bytes)
           handler: onInvoked
 
-  - kind: ethereum/contract
-    name: Block
-    network: mainnet
-    source:
-      abi: TOTPWallet
-      address: "0x4595D704aF3aaD3FB98bF2C60dA9D604e08e61d4"
-      startBlock: 10
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.4
-      language: wasm/assemblyscript
-      file: ./src/mapping/wallet.ts
-      entities:
-        - Summary
-      abis:
-        - name: TOTPWallet
-          file: ./abis/TOTPWallet.json
-      blockHandlers:
-        - handler: handleBlock
+

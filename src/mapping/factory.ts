@@ -2,6 +2,7 @@ import {WalletFactory, Wallet} from "../../generated/schema"
 import {WalletCreated} from "../../generated/WalletFactory/WalletFactory"
 import {getSummary} from "../entities"
 import { Address, BigDecimal, BigInt } from '@graphprotocol/graph-ts'
+import { WalletTemplate } from '../../generated/templates'
 
 export function onWalletCreated(event: WalletCreated): void {
     let factory = WalletFactory.load(event.transaction.from.toHex());
@@ -12,6 +13,9 @@ export function onWalletCreated(event: WalletCreated): void {
     let wallet = new Wallet(event.params.wallet.toHex());
     wallet.factory = event.transaction.from.toHex()
     wallet.save()
+
+    // for template
+    WalletTemplate.create(event.params.wallet);
     
     var summary = getSummary()
     summary.walletCount = summary.walletCount.plus(BigInt.fromI32(1))
