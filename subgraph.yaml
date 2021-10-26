@@ -23,7 +23,25 @@ dataSources:
           file: ./abis/TOTPWallet.json
       blockHandlers:
         - handler: handleBlock
-
+  - kind: ethereum/contract
+    name: ERC20
+    network: mainnet
+    source:
+      abi: ERC20
+      startBlock: 100
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mapping/wallet.ts
+      entities:
+        - WalletBalance
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleERC20Transfer
   - kind: ethereum/contract
     name: WalletFactory
     network: mainnet

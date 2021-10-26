@@ -7,6 +7,14 @@ type Wallet @entity {
   id: ID!
   factory: WalletFactory!
   balance: BigInt
+  erc20Balance: [WalletBalance!]! @derivedFrom(field: "wallet")
+}
+
+type WalletBalance @entity {
+  id: ID!
+  wallet: Wallet!
+  token: Bytes,
+  balance: BigInt!
 }
 
 type Summary @entity {

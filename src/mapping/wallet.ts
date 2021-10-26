@@ -1,8 +1,11 @@
-import {WalletFactory, Wallet, Transaction} from "../../generated/schema"
+import {WalletFactory, Wallet, Transaction, WalletBalance} from "../../generated/schema"
 import {Initialized, TransactionExecuted, Deposit, Invoked} from "../../generated/Wallet/TOTPWallet"
 import {TransactionExecuted as TransactionExecutedOld } from "../../generated/OldWallet/TOTPWallet"
 import {getSummary} from "../entities";
-import { Address, BigDecimal, BigInt } from '@graphprotocol/graph-ts'
+import { Address, BigDecimal, BigInt, Bytes } from '@graphprotocol/graph-ts'
+import { Transfer } from "../../generated/ERC20/ERC20"
+import { log } from '@graphprotocol/graph-ts'
+
 export const BIG_DECIMAL_1E18 = BigDecimal.fromString('1e18')
 export const BIG_DECIMAL_1E12 = BigDecimal.fromString('1e12')
 export const BIG_INT_ZERO = BigInt.fromI32(0)
@@ -100,10 +103,57 @@ export function onDeposit(deposit: Deposit): void {
     var summary = getSummary();
     summary.totalBalance = summary.totalBalance.plus(deposit.params.value.toBigDecimal().div(BIG_DECIMAL_1E18))
     summary.save()
+
+    var wallet = Wallet.load(deposit.address.toHex())
+    if (wallet != null) {
+        wallet.balance = wallet.balance.plus(deposit.params.value);
+        wallet.save()
+    }
 }
 
 export function onInvoked(invoked: Invoked): void {
     var summary = getSummary();
     summary.totalBalance = summary.totalBalance.minus(invoked.params.value.toBigDecimal().div(BIG_DECIMAL_1E18))
     summary.save()
+    
+    var wallet = Wallet.load(invoked.address.toHex())
+    if (wallet != null) {
+        wallet.balance = wallet.balance.minus(invoked.params.value);
+        wallet.save()
+    }
+}
+
+function getBalance(wallet: string, token: Bytes): WalletBalance {
+    var id = wallet + ":" + token.toHex();
+    let bar = WalletBalance.load(id)
+  
+    if (bar == null) {
+      bar = new WalletBalance(id);
+      bar.balance = BIG_INT_ZERO
+      bar.wallet = wallet
+      bar.token = token
+      bar.save()
+    }
+  
+    return bar as WalletBalance
+}
+
+export function handleERC20Transfer(transfer: Transfer): void {
+    var wallet = Wallet.load(transfer.params.from.toHex())
+    //debit
+    log.info("erc20transfer lookup {} value={} found={}", [transfer.params.from.toHex(), transfer.params.value.toString(), wallet.id])
+
+    if(wallet != null) {
+        var balance = getBalance(wallet.id, transfer.address)        
+        balance.balance = balance.balance.minus(transfer.params.value)
+        balance.save()
+    }
+
+    var walletTo = Wallet.load(transfer.params.to.toHex())
+    //credit
+    if(walletTo != null) {
+        var balanceTo = getBalance(walletTo.id, transfer.address)        
+        balanceTo.balance = balanceTo.balance.plus(transfer.params.value)
+        balanceTo.save()
+    }
 }
