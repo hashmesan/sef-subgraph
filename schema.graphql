@@ -7,7 +7,7 @@ type Wallet @entity {
   id: ID!
   factory: WalletFactory!
   balance: BigInt
-  domain: String!
+  domain: String
   erc20Balance: [WalletBalance!]! @derivedFrom(field: "wallet")
   transactions: [Transaction!]! @derivedFrom(field: "wallet")
 }

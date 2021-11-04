@@ -1,6 +1,6 @@
 import {WalletFactory, Wallet, Transaction, WalletBalance, Transfer as TransferEntity, TransferSummary} from "../../generated/schema"
-import {Initialized, TransactionExecuted, Deposit, Invoked} from "../../generated/Wallet/TOTPWallet"
-import {TransactionExecuted as TransactionExecutedOld } from "../../generated/OldWallet/TOTPWallet"
+import {Initialized, TransactionExecuted, Deposit, Invoked} from "../../generated/templates/WalletTemplate/TOTPWallet"
+import {TransactionExecuted as TransactionExecutedOld } from "../../generated/templates/OldWallet/TOTPWallet"
 import {getSummary} from "../entities";
 import { Address, BigDecimal, BigInt, Bytes } from '@graphprotocol/graph-ts'
 import { Transfer } from "../../generated/ERC20/ERC20"
