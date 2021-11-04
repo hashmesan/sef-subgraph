@@ -1,4 +1,4 @@
-import {WalletFactory, Wallet, Transaction, WalletBalance} from "../../generated/schema"
+import {WalletFactory, Wallet, Transaction, WalletBalance, Transfer as TransferEntity, TransferSummary} from "../../generated/schema"
 import {Initialized, TransactionExecuted, Deposit, Invoked} from "../../generated/Wallet/TOTPWallet"
 import {TransactionExecuted as TransactionExecutedOld } from "../../generated/OldWallet/TOTPWallet"
 import {getSummary} from "../entities";
@@ -30,6 +30,7 @@ export function onMetaTransaction(event: TransactionExecuted): void {
     tx.refundFee = event.params.refundFee;
     tx.metaSuccess = event.params.success;
     tx.isMeta = true;
+    tx.wallet = tx.to.toHex();
 
     var summary = getSummary();
     summary.txCount = summary.txCount.plus(BigInt.fromI32(1))
@@ -57,6 +58,7 @@ export function onMetaTransaction2(event: TransactionExecutedOld): void {
     tx.refundFee = BIG_INT_ZERO;
     tx.metaSuccess = event.params.success;
     tx.isMeta = true;
+    tx.wallet = tx.to.toHex();
 
     var summary = getSummary();
     summary.txCount = summary.txCount.plus(BigInt.fromI32(1))
@@ -81,6 +83,7 @@ export function onInitialized(event: Initialized): void {
     tx.refundFee = event.params.refundFee;
     tx.metaSuccess = true;
     tx.isMeta = false;
+    tx.wallet = tx.to.toHex();
 
     var summary = getSummary();
     summary.txCount.plus(BigInt.fromI32(1))
@@ -101,7 +104,7 @@ export function handleBlock(block: ethereum.Block): void {
 
 export function onDeposit(deposit: Deposit): void {
     var summary = getSummary();
-    summary.totalBalance = summary.totalBalance.plus(deposit.params.value.toBigDecimal().div(BIG_DECIMAL_1E18))
+    summary.totalDeposits = summary.totalDeposits.plus(deposit.params.value.toBigDecimal().div(BIG_DECIMAL_1E18))
     summary.save()
 
     var wallet = Wallet.load(deposit.address.toHex())
@@ -113,13 +116,23 @@ export function onDeposit(deposit: Deposit): void {
 
 export function onInvoked(invoked: Invoked): void {
     var summary = getSummary();
-    summary.totalBalance = summary.totalBalance.minus(invoked.params.value.toBigDecimal().div(BIG_DECIMAL_1E18))
+    summary.totalWithdrawals = summary.totalWithdrawals.plus(invoked.params.value.toBigDecimal().div(BIG_DECIMAL_1E18))
     summary.save()
     
     var wallet = Wallet.load(invoked.address.toHex())
     if (wallet != null) {
         wallet.balance = wallet.balance.minus(invoked.params.value);
         wallet.save()
+    }
+
+    if(invoked.params.value.gt(BIG_INT_ZERO)) {
+        let transfer = new TransferEntity(invoked.transaction.hash.toHex()  + "-" + invoked.logIndex.toString());
+        transfer.transaction = invoked.transaction.hash.toHex();
+        transfer.from = invoked.address;
+        transfer.to = invoked.params.target;
+        transfer.value = invoked.params.value;
+        transfer.token = Address.fromString("0x0000000000000000000000000000000000000000");
+        transfer.save();    
     }
 }
 
@@ -146,7 +159,7 @@ export function handleERC20Transfer(transfer: Transfer): void {
     if(wallet != null) {
         var balance = getBalance(wallet.id, transfer.address)        
         balance.balance = balance.balance.minus(transfer.params.value)
-        balance.save()
+        balance.save()      
     }
 
     var walletTo = Wallet.load(transfer.params.to.toHex())
@@ -155,5 +168,29 @@ export function handleERC20Transfer(transfer: Transfer): void {
         var balanceTo = getBalance(walletTo.id, transfer.address)        
         balanceTo.balance = balanceTo.balance.plus(transfer.params.value)
         balanceTo.save()
+        
+    }
+
+    if(wallet != null || walletTo != null) {
+        if(transfer.params.value.gt(BIG_INT_ZERO)) {
+            let tx = new TransferEntity(transfer.transaction.hash.toHex()  + "-" + transfer.logIndex.toString());
+            tx.transaction = transfer.transaction.hash.toHex();
+            tx.from = transfer.params.from;
+            tx.to = transfer.params.to;
+            tx.value = transfer.params.value;
+            tx.token = transfer.address; 
+            tx.save();    
+
+            const summary_id = transfer.params.to.toHex() + "-" + transfer.address.toHex();
+            let summary = TransferSummary.load(summary_id);
+            if(summary == null) {
+                summary = new TransferSummary(summary_id);
+                summary.value = BIG_INT_ZERO;
+                summary.token = transfer.address;
+                summary.address = transfer.params.to;
+            }
+            summary.value = summary.value.plus(transfer.params.value);
+            summary.save();
+        } 
     }
 }

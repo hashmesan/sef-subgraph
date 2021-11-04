@@ -7,7 +7,9 @@ type Wallet @entity {
   id: ID!
   factory: WalletFactory!
   balance: BigInt
+  domain: String!
   erc20Balance: [WalletBalance!]! @derivedFrom(field: "wallet")
+  transactions: [Transaction!]! @derivedFrom(field: "wallet")
 }
 
 type WalletBalance @entity {
@@ -24,11 +26,14 @@ type Summary @entity {
   feePaid: BigDecimal
   feeCollected: BigDecimal
   currentBlock: BigInt
-  totalBalance: BigDecimal
+  totalDeposits: BigDecimal
+  totalWithdrawals: BigDecimal
+  recoveries: BigInt
 }
 
 type Transaction @entity {
   id: ID!
+  wallet: Wallet
   blockNumber: BigInt,
   blockTime: BigInt,
   from: Bytes,
@@ -41,4 +46,21 @@ type Transaction @entity {
   refundFee: BigInt,
   isMeta: Boolean,
   metaSuccess: Boolean
+  transfers: [Transfer!]! @derivedFrom(field: "transaction")
+}
+
+type Transfer @entity {
+  id: ID!
+  transaction: Transaction!
+  from: Bytes
+  to: Bytes
+  value: BigInt
+  token: Bytes
+}
+
+type TransferSummary @entity {
+  id: ID!
+  value: BigInt
+  token: Bytes
+  address: Bytes
 }

@@ -10,7 +10,7 @@ dataSources:
     source:
       abi: TOTPWallet
       address: "0x4595D704aF3aaD3FB98bF2C60dA9D604e08e61d4"
-      startBlock: 10
+      startBlock: 15000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -28,7 +28,7 @@ dataSources:
     network: mainnet
     source:
       abi: ERC20
-      startBlock: 100
+      startBlock: 15000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -47,7 +47,7 @@ dataSources:
     network: mainnet
     source:
       abi: WalletFactory
-      startBlock: 10
+      startBlock: 15000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -59,6 +59,26 @@ dataSources:
       abis:
         - name: WalletFactory
           file: ./abis/WalletFactory.json
+      eventHandlers:
+        - event: WalletCreated(address,address,string[3])
+          handler: onWalletCreatedWithDomain
+  - kind: ethereum/contract
+    name: WalletFactory2
+    network: mainnet
+    source:
+      abi: WalletFactory
+      startBlock: 15000000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mapping/factory.ts
+      entities:
+        - WalletFactory
+        - Summary
+      abis:
+        - name: WalletFactory
+          file: ./abis/WalletFactory_old.json
       eventHandlers:
         - event: WalletCreated(address,address)
           handler: onWalletCreated
@@ -107,5 +127,3 @@ templates:
           handler: onDeposit
         - event: Invoked(indexed address,indexed uint256,bytes,bool,bytes)
           handler: onInvoked
-
-

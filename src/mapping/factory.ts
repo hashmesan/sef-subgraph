@@ -1,25 +1,38 @@
 import {WalletFactory, Wallet} from "../../generated/schema"
 import {WalletCreated} from "../../generated/WalletFactory/WalletFactory"
 import {getSummary} from "../entities"
-import { Address, BigDecimal, BigInt } from '@graphprotocol/graph-ts'
+import { Address, BigDecimal, BigInt, log } from '@graphprotocol/graph-ts'
 import { WalletTemplate, OldWallet } from '../../generated/templates'
+import {WalletCreated as WalletCreatedOld} from "../../generated/WalletFactory2/WalletFactory"
 
-export function onWalletCreated(event: WalletCreated): void {
-    let factory = WalletFactory.load(event.transaction.from.toHex());
+function importEvent(wf: Address, walletAddr: Address, domain: Array<string>): void {
+    let factory = WalletFactory.load(wf.toHex());
     if(factory == null) {
-        factory = new WalletFactory(event.transaction.from.toHex());
+        factory = new WalletFactory(wf.toHex());
         factory.save()
     }
-    let wallet = new Wallet(event.params.wallet.toHex());
-    wallet.factory = event.transaction.from.toHex()
+    let wallet = new Wallet(walletAddr.toHex());
+    wallet.factory = wf.toHex()
     wallet.balance = BigInt.fromI32(0)
+    if(domain.length >= 2) {
+        wallet.domain = domain.slice(0,2).join(".")
+    }
     wallet.save()
 
+    log.info("SEF:NEW_WALLET={} factory={}", [walletAddr.toHex(), wf.toHex()])
+
     // for template
-    WalletTemplate.create(event.params.wallet);
-    OldWallet.create(event.params.wallet);
-    
+    WalletTemplate.create(walletAddr);
+    OldWallet.create(walletAddr);
+
     var summary = getSummary()
     summary.walletCount = summary.walletCount.plus(BigInt.fromI32(1))
     summary.save()
+}
+export function onWalletCreatedWithDomain(event: WalletCreated): void {
+    importEvent(event.transaction.from, event.params.wallet, event.params.domain)
+}
+
+export function onWalletCreated(event: WalletCreatedOld): void {
+    importEvent(event.transaction.from, event.params.wallet, [])
 }

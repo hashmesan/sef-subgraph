@@ -14,7 +14,8 @@ export function getSummary(): Summary {
       bar.feePaid = BIG_DECIMAL_ZERO
       bar.feeCollected = BIG_DECIMAL_ZERO
       bar.currentBlock = BIG_INT_ZERO
-      bar.totalBalance = BIG_DECIMAL_ZERO
+      bar.totalDeposits = BIG_DECIMAL_ZERO
+      bar.totalWithdrawals = BIG_DECIMAL_ZERO
       bar.save()
     }
   
