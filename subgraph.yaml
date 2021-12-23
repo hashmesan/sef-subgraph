@@ -6,12 +6,12 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Block
-    # network: mainnet
-    network: testnet
+    network: mainnet
+    # network: testnet
     source:
       abi: TOTPWallet
-      address: "0x2987b4c366df429092ce3c28598d5ff14faac4f3"
-      startBlock: 15000000
+      address: "0xEbCE51A9A6cD0AFA7BCB9DBd7510A3DD0aBD9907"
+      startBlock: 20334901
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -26,11 +26,11 @@ dataSources:
         - handler: handleBlock
   - kind: ethereum/contract
     name: ERC20
-    # network: mainnet
-    network: testnet
+    network: mainnet
+    # network: testnet
     source:
       abi: ERC20
-      startBlock: 15000000
+      startBlock: 20334901
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -46,11 +46,12 @@ dataSources:
           handler: handleERC20Transfer
   - kind: ethereum/contract
     name: WalletFactory
-    # network: mainnet
-    network: testnet
+    network: mainnet
+    # network: testnet
     source:
       abi: WalletFactory
-      startBlock: 15000000
+      address: "0xE540A2A0aF81A28d401F12a0a0c3e9E7C46aba5f"
+      startBlock: 20334901
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -63,34 +64,14 @@ dataSources:
         - name: WalletFactory
           file: ./abis/WalletFactory.json
       eventHandlers:
-        - event: WalletCreated(address,address,string[3])
-          handler: onWalletCreatedWithDomain
+        # - event: CreateWalletEvent(address,address)
+        - event: WalletCreated(address,address)
+          handler: onCreateWallet
 templates:
-  - kind: ethereum/contract
-    name: OldWallet
-    # network: mainnet
-    network: testnet
-    source:
-      abi: TOTPWallet
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.4
-      language: wasm/assemblyscript
-      file: ./src/mapping/wallet.ts
-      entities:
-        - Wallet
-        - Summary
-      abis:
-        - name: TOTPWallet
-          file: ./abis/TOTPWallet_old.json
-      eventHandlers:
-        - event: TransactionExecuted(indexed bool,bytes,bytes32)
-          handler: onMetaTransaction2
-
   - name: WalletTemplate
     kind: ethereum/contract
-    # network: mainnet
-    network: testnet
+    network: mainnet
+    # network: testnet
     source:
       abi: TOTPWallet
     mapping:
@@ -104,8 +85,8 @@ templates:
         - name: TOTPWallet
           file: ./abis/TOTPWallet.json
       eventHandlers:
-        - event: TransactionExecuted(indexed bool,bytes,bytes32,address,uint256)
-          handler: onMetaTransaction
+        # - event: TransactionExecuted(indexed bool,bytes,bytes32,address,uint256)
+        #   handler: onMetaTransaction
         # - event: Initialized(address,address,uint256)
         #   handler: onInitialized
         - event: Deposit(indexed address,uint256)

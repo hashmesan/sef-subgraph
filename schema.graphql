@@ -15,7 +15,7 @@ type Wallet @entity {
 type WalletBalance @entity {
   id: ID!
   wallet: Wallet!
-  token: Bytes,
+  token: Bytes
   balance: BigInt!
 }
 
@@ -34,17 +34,15 @@ type Summary @entity {
 type Transaction @entity {
   id: ID!
   wallet: Wallet
-  blockNumber: BigInt,
-  blockTime: BigInt,
-  from: Bytes,
-  to: Bytes,
-  value: BigInt,
-  data: Bytes,
-  gasUsed: BigInt,
-  gasPrice: BigInt,
-  refundAddress: Bytes,
-  refundFee: BigInt,
-  isMeta: Boolean,
+  blockNumber: BigInt
+  blockTime: BigInt
+  from: Bytes
+  to: Bytes
+  value: BigInt
+  data: Bytes
+  gasUsed: BigInt
+  gasPrice: BigInt
+  isMeta: Boolean
   metaSuccess: Boolean
   transfers: [Transfer!]! @derivedFrom(field: "transaction")
 }
