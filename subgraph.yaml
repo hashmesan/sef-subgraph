@@ -6,12 +6,13 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Block
-    network: mainnet
-    # network: testnet
+    # network: mainnet
+    network: testnet
     source:
       abi: TOTPWallet
       address: "0xEbCE51A9A6cD0AFA7BCB9DBd7510A3DD0aBD9907"
-      startBlock: 20334901
+      # startBlock: 20334901
+      startBlock: 18334901
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -26,11 +27,12 @@ dataSources:
         - handler: handleBlock
   - kind: ethereum/contract
     name: ERC20
-    network: mainnet
-    # network: testnet
+    # network: mainnet
+    network: testnet
     source:
       abi: ERC20
-      startBlock: 20334901
+      # startBlock: 20334901
+      startBlock: 18334901
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -46,12 +48,13 @@ dataSources:
           handler: handleERC20Transfer
   - kind: ethereum/contract
     name: WalletFactory
-    network: mainnet
-    # network: testnet
+    # network: mainnet
+    network: testnet
     source:
       abi: WalletFactory
       address: "0xE540A2A0aF81A28d401F12a0a0c3e9E7C46aba5f"
-      startBlock: 20334901
+      # startBlock: 20334901
+      startBlock: 18334901
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -64,14 +67,13 @@ dataSources:
         - name: WalletFactory
           file: ./abis/WalletFactory.json
       eventHandlers:
-        # - event: CreateWalletEvent(address,address)
-        - event: WalletCreated(address,address)
+        - event: CreateWallet(address,address,string[2])
           handler: onCreateWallet
 templates:
   - name: WalletTemplate
     kind: ethereum/contract
-    network: mainnet
-    # network: testnet
+    # network: mainnet
+    network: testnet
     source:
       abi: TOTPWallet
     mapping:

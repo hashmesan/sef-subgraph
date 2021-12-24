@@ -23,12 +23,9 @@ type Summary @entity {
   id: ID!
   walletCount: BigInt
   txCount: BigInt
-  feePaid: BigDecimal
-  feeCollected: BigDecimal
   currentBlock: BigInt
   totalDeposits: BigDecimal
   totalWithdrawals: BigDecimal
-  recoveries: BigInt
 }
 
 type Transaction @entity {
@@ -42,7 +39,6 @@ type Transaction @entity {
   data: Bytes
   gasUsed: BigInt
   gasPrice: BigInt
-  isMeta: Boolean
   metaSuccess: Boolean
   transfers: [Transfer!]! @derivedFrom(field: "transaction")
 }
