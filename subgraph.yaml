@@ -10,7 +10,8 @@ dataSources:
     network: testnet
     source:
       abi: TOTPWallet
-      address: "0xEbCE51A9A6cD0AFA7BCB9DBd7510A3DD0aBD9907"
+      # address: "0xEbCE51A9A6cD0AFA7BCB9DBd7510A3DD0aBD9907"
+      address: "0x7d39b09f66a4978b33A491dffF439DAdb27AC2F0"
       # startBlock: 20334901
       startBlock: 18334901
     mapping:
@@ -52,7 +53,8 @@ dataSources:
     network: testnet
     source:
       abi: WalletFactory
-      address: "0xE540A2A0aF81A28d401F12a0a0c3e9E7C46aba5f"
+      # address: "0xE540A2A0aF81A28d401F12a0a0c3e9E7C46aba5f"　# mainnet
+      address: "0x4556b8f2B4D3DE804AC9F8A72D2c5246C835dD97" # testnet
       # startBlock: 20334901
       startBlock: 18334901
     mapping:
