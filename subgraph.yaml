@@ -85,10 +85,8 @@ templates:
         - name: TOTPWallet
           file: ./abis/TOTPWallet.json
       eventHandlers:
-        # - event: TransactionExecuted(indexed bool,bytes,bytes32,address,uint256)
-        #   handler: onMetaTransaction
-        # - event: Initialized(address,address,uint256)
-        #   handler: onInitialized
+        - event: TransactionExecuted(indexed bool,bytes,bytes32)
+          handler: onMetaTransaction
         - event: Deposit(indexed address,uint256)
           handler: onDeposit
         - event: Invoked(indexed address,indexed uint256,bytes,bool,bytes)

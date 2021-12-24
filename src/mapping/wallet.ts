@@ -54,63 +54,6 @@ export function onMetaTransaction(event: TransactionExecuted): void {
   tx.save();
 }
 
-export function onMetaTransaction2(event: TransactionExecutedOld): void {
-  let tx = new Transaction(event.transaction.hash.toHex());
-  tx.blockNumber = event.block.number;
-  tx.blockTime = event.block.timestamp;
-  tx.from = event.transaction.from;
-  tx.to = event.transaction.to;
-  tx.value = event.transaction.value;
-  tx.data = event.transaction.input;
-  tx.gasUsed = event.transaction.gasUsed;
-  tx.gasPrice = event.transaction.gasPrice;
-  //   tx.refundAddress = Address.fromString(
-  //     "0x0000000000000000000000000000000000000000"
-  //   );
-  //   tx.refundFee = BIG_INT_ZERO;
-  tx.metaSuccess = event.params.success;
-  tx.isMeta = true;
-  tx.wallet = tx.to.toHex();
-
-  var summary = getSummary();
-  summary.txCount = summary.txCount.plus(BigInt.fromI32(1));
-  var feePaid = event.transaction.gasPrice
-    .toBigDecimal()
-    .div(BIG_DECIMAL_1E18)
-    .times(event.transaction.gasUsed.toBigDecimal());
-  summary.feePaid.plus(feePaid);
-  summary.save();
-
-  tx.save();
-}
-
-// export function onInitialized(event: Initialized): void {
-//     let tx = new Transaction(event.transaction.hash.toHex());
-//     tx.blockNumber = event.block.number;
-//     tx.blockTime = event.block.timestamp;
-//     tx.from = event.transaction.from;
-//     tx.to = event.transaction.to;
-//     tx.value = event.transaction.value;
-//     tx.data = event.transaction.input;
-//     tx.gasUsed = event.transaction.gasUsed;
-//     tx.gasPrice = event.transaction.gasPrice;
-//     tx.refundAddress = event.params.refundAddress;
-//     tx.refundFee = event.params.refundFee;
-//     tx.metaSuccess = true;
-//     tx.isMeta = false;
-//     tx.wallet = tx.to.toHex();
-
-//     var summary = getSummary();
-//     summary.txCount.plus(BigInt.fromI32(1))
-//     var feePaid = event.transaction.gasPrice.toBigDecimal().div(BIG_DECIMAL_1E18).times(event.transaction.gasUsed.toBigDecimal())
-//     var refundFee = event.params.refundFee.toBigDecimal().div(BIG_DECIMAL_1E18)
-//     summary.feePaid.plus(feePaid)
-//     summary.feeCollected.plus(refundFee)
-//     summary.save();
-
-//     tx.save();
-// }
-
 export function handleBlock(block: ethereum.Block): void {
   var summary = getSummary();
   summary.currentBlock = block.number;
