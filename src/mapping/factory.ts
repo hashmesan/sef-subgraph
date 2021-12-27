@@ -19,6 +19,7 @@ export function onCreateWallet(event: CreateWallet): void {
   wallet.factory = factoryHex;
   wallet.balance = BigInt.fromI32(0);
   wallet.domain = domain.slice(0, 2).join(".");
+  wallet.createdBlockTime = event.block.timestamp;
 
   wallet.save();
 

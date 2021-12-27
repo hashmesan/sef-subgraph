@@ -20,7 +20,8 @@ dataSources:
         - Summary
       abis:
         - name: TOTPWallet
-          file: ./abis/TOTPWallet.json
+          file: ./node_modules/@no-bank/contracts/build/contracts/TOTPWallet.json
+          # file: ./abis/TOTPWallet.json
       blockHandlers:
         - handler: handleBlock
   - kind: ethereum/contract
@@ -38,7 +39,7 @@ dataSources:
         - WalletBalance
       abis:
         - name: ERC20
-          file: ./abis/ERC20.json
+          file: ./node_modules/@no-bank/contracts/build/contracts/ERC20.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleERC20Transfer
@@ -59,7 +60,8 @@ dataSources:
         - Summary
       abis:
         - name: WalletFactory
-          file: ./abis/WalletFactory.json
+          file: ./node_modules/@no-bank/contracts/build/contracts/WalletFactory.json
+          # file: ./abis/WalletFactory.json
       eventHandlers:
         - event: CreateWallet(address,address,string[2])
           handler: onCreateWallet
@@ -78,7 +80,8 @@ templates:
         - Wallet
       abis:
         - name: TOTPWallet
-          file: ./abis/TOTPWallet.json
+          file: ./node_modules/@no-bank/contracts/build/contracts/TOTPWallet.json
+          # file: ./abis/TOTPWallet.json
       eventHandlers:
         - event: TransactionExecuted(indexed bool,bytes,bytes32)
           handler: onMetaTransaction

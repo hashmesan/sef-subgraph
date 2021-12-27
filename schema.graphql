@@ -8,10 +8,19 @@ type Wallet @entity {
   factory: WalletFactory!
   balance: BigInt
   domain: String
+  createdBlockTime: BigInt
   erc20Balance: [WalletBalance!]! @derivedFrom(field: "wallet")
   transactions: [Transaction!]! @derivedFrom(field: "wallet")
 }
-
+"""
+type InitialFund @entity {
+  id: ID!
+  factory: WalletFactory!
+  oneAmount: BigInt
+  erc20Amount: [WalletBalance!]! @derivedFrom(field: "wallet")
+  blockTime: BigInt
+}
+"""
 type WalletBalance @entity {
   id: ID!
   wallet: Wallet!
