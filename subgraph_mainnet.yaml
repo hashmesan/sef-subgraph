@@ -6,11 +6,12 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Block
-    network: testnet
+    network: mainnet
     source:
       abi: TOTPWallet
-      address: "0xE9f9adf59AFB3c66E602C9e907c3eD2Ae5E2f327"
-      startBlock: 19377818
+      address: "0xcf329eE68C9bd32eFf2Fcee03189401B47BfBcDA"
+      # address: "0xEbCE51A9A6cD0AFA7BCB9DBd7510A3DD0aBD9907"
+      startBlock: 20990648
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -25,10 +26,10 @@ dataSources:
         - handler: handleBlock
   - kind: ethereum/contract
     name: ERC20
-    network: testnet
+    network: mainnet
     source:
       abi: ERC20
-      startBlock: 19377818
+      startBlock: 20990648
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -44,11 +45,12 @@ dataSources:
           handler: handleERC20Transfer
   - kind: ethereum/contract
     name: WalletFactory
-    network: testnet
+    network: mainnet
     source:
       abi: WalletFactory
-      address: "0xF03f1224E000EC16827d1e79326fBbFbd0f913bB" # testnet
-      startBlock: 19377818
+      address: "0xFE8F739586e5056Dfe7B01eb4F3ac58B9D03E455"
+      # address: "0xE540A2A0aF81A28d401F12a0a0c3e9E7C46aba5f"
+      startBlock: 20990648
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -66,7 +68,7 @@ dataSources:
 templates:
   - name: WalletTemplate
     kind: ethereum/contract
-    network: testnet
+    network: mainnet
     source:
       abi: TOTPWallet
     mapping:

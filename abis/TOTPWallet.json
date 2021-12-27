@@ -130,7 +130,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -210,11 +211,13 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "stateMutability": "payable",
-      "type": "receive"
+      "type": "receive",
+      "payable": true
     },
     {
       "inputs": [
@@ -314,7 +317,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -467,7 +471,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -480,7 +485,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -506,7 +512,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -519,7 +526,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -590,7 +598,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -603,7 +612,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -665,7 +675,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -690,7 +701,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -723,7 +735,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -762,7 +775,8 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -801,7 +815,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -820,7 +835,8 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -854,7 +870,8 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"returnData\",\"type\":\"bytes\"}],\"name\":\"Invoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"returnData\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"signedHash\",\"type\":\"bytes32\"}],\"name\":\"TransactionExecuted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"WalletTransfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newImpl\",\"type\":\"address\"}],\"name\":\"WalletUpgraded\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"guardian\",\"type\":\"address\"}],\"name\":\"addGuardian\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"cancelRecovery\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"signatures\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasLimit\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address payable\",\"name\":\"refundAddress\",\"type\":\"address\"}],\"name\":\"executeFreeMetaTx\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"signatures\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasLimit\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address payable\",\"name\":\"refundAddress\",\"type\":\"address\"}],\"name\":\"executeMetaTx\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"finalizeRecovery\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCounter\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getGuardians\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getHashStorageId\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMasterCopy\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRecovery\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"_data\",\"type\":\"bytes\"}],\"name\":\"getRequiredSignatures\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"},{\"internalType\":\"enum Core.OwnerSignature\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRootHashes\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"resolver_\",\"type\":\"address\"},{\"internalType\":\"string[2]\",\"name\":\"domain_\",\"type\":\"string[2]\"},{\"internalType\":\"address\",\"name\":\"owner_\",\"type\":\"address\"},{\"internalType\":\"bytes32[]\",\"name\":\"rootHash_\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint8\",\"name\":\"merkleHeight_\",\"type\":\"uint8\"},{\"internalType\":\"address payable\",\"name\":\"drainAddr_\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"dailyLimit_\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"feeRecipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"feeAmount\",\"type\":\"uint256\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isGuardian\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isRecovering\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"makeTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"internalType\":\"struct TOTPWallet.Call[]\",\"name\":\"_transactions\",\"type\":\"tuple[]\"}],\"name\":\"multiCall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"\",\"type\":\"bytes[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"ids\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"values\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onERC1155BatchReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"subdomain\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"domain\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"duration\",\"type\":\"uint256\"}],\"name\":\"registerENS\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"guardian\",\"type\":\"address\"}],\"name\":\"revokeGuardian\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"setDailyLimit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setDrainAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"}],\"name\":\"setHashStorageId\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"secretHash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"dataHash\",\"type\":\"bytes32\"}],\"name\":\"startRecoverCommit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner_\",\"type\":\"address\"}],\"name\":\"startRecoverGuardianOnly\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"},{\"internalType\":\"bytes32[]\",\"name\":\"confirmMaterial\",\"type\":\"bytes32[]\"}],\"name\":\"startRecoveryReveal\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceID\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newMasterCopy\",\"type\":\"address\"}],\"name\":\"upgradeMasterCopy\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"version\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"wallet\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"locked\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"merkleHeight\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"counter\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"drainAddr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"dailyLimit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lastDay\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"spentToday\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"hashStorageID\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"}],\"internalType\":\"struct Core.RecoveryInfo\",\"name\":\"pendingRecovery\",\"type\":\"tuple\"},{\"internalType\":\"address\",\"name\":\"resolver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\":{\"details\":\"Handles the receipt of a multiple ERC1155 token types. This function is called at the end of a `safeBatchTransferFrom` after the balances have been updated. To accept the transfer(s), this must return `bytes4(keccak256(\\\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\\\"))` (i.e. 0xbc197c81, or its own function selector).\",\"params\":{\"data\":\"Additional data with no specified format\",\"from\":\"The address which previously owned the token\",\"ids\":\"An array containing ids of each token being transferred (order and length must match values array)\",\"operator\":\"The address which initiated the batch transfer (i.e. msg.sender)\",\"values\":\"An array containing amounts of each token being transferred (order and length must match ids array)\"},\"returns\":{\"_0\":\"`bytes4(keccak256(\\\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\\\"))` if transfer is allowed\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/otpWallet.sol\":\"TOTPWallet\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":3000},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC1155/IERC1155.sol\":{\"keccak256\":\"0x8e93de94c9062ebc94fb7e2e3929b0781ac6a2b7772e2f7a59045861c93e5be9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f920a631bf986c610fe573d3c70a2bb6f224f86f4a8550016470c7ee476c9ab5\",\"dweb:/ipfs/QmYzsyVMfnaREKHcHv5RPS8Xg5r1Q38E2SDsGBTnXeFWzb\"]},\"@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol\":{\"keccak256\":\"0xc743d2235b8854045c308d2f8f1ed88efed6c2bebf2b7a4a51ea42480c82e566\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://05e54e397a053f319187999ef4d65446a7f15f693ddd66dfaed4d856f67dac4e\",\"dweb:/ipfs/QmbGTFVdZxShg76UPcuLAXm6HBjZx3Vn6CL1eaBhV9rST1\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x61437cb513a887a1bbad006e7b1c8b414478427d33de47c5600af3c748f108da\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2c3d0973630ed74f2b5ce3944677a885dc70ec32fc83b35f55045a10224da32b\",\"dweb:/ipfs/QmbefZ5RoEZKNHXCALfh683PnaNYzKPcKMFjyY1DVAgq8A\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd\",\"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8\"]},\"@openzeppelin/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x516a22876c1fab47f49b1bc22b4614491cd05338af8bd2e7b382da090a079990\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a439187f7126d31add4557f82d8aed6be0162007cd7182c48fd934dbab8f3849\",\"dweb:/ipfs/QmRPLguRFvrRJS7r6F1bcLvsx6q1VrgjEpZafyeL8D7xZh\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0xd5fa74b4fb323776fa4a8158800fec9d5ac0fec0d6dd046dd93798632ada265f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://33017a30a99cc5411a9e376622c31fc4a55cfc6a335e2f57f00cbf24a817ff3f\",\"dweb:/ipfs/QmWNQtWTPhA7Lo8nbxbc8KFMvZwbFYB8fSeEQ3vuapSV4a\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x51b758a8815ecc9596c66c37d56b1d33883a444631a3f916b9fe65cb863ef7c4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://997ca03557985b3c6f9143a18b6c3a710b3bc1c7f189ee956d305a966ecfb922\",\"dweb:/ipfs/QmQaD3Wb62F88SHqmpLttvF6wKuPDQep2LLUcKPekeRzvz\"]},\"@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"project:/contracts/core/walletData.sol\":{\"keccak256\":\"0xc1ae2391bb1bb53c52c8436d919fa8f6d7775fb000bb5b8a3f34fbd2b7b60698\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://e20df2bda81e4bb09dba3d2be32ffbdebd09ae071ed5ab051b519c1640028925\",\"dweb:/ipfs/QmW6F4omNduh8RZABeqA9t15KXZQU85JkAcK4nP75G5J1J\"]},\"project:/contracts/ens/ensResolver.sol\":{\"keccak256\":\"0x7db2b039b32dbc8cf746e0cac16bf208458bb7216e35314f28385c21a4f75b92\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://41d00611a0f9008306161d65a854b81ee47ad37b9d28da1f94ad47879bf41e57\",\"dweb:/ipfs/QmSEYFxCAQ7Wg7UphxxfmAjuVdMrt4Ztz1sg9e5G3EVJ5A\"]},\"project:/contracts/ens/registrarInterface.sol\":{\"keccak256\":\"0x55b41257ea2eb984132620763014da628b30fa4111488c99d2e6a4da5a3756fa\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://94253998f0f8d0e88ad083fcd80bd15ff2cce616429f657c8635a58cb0320438\",\"dweb:/ipfs/QmZz1M4nV3R3ftn5xRJFuzYJ31zfEz1duihH6uniSKcvqo\"]},\"project:/contracts/features/dailyLimit.sol\":{\"keccak256\":\"0x65addd602b72134024b7b6a4e9b777914647619b6ef1415c3379d01e4241e1a0\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://2144b1c91b9a106fea22a05a9b4465ca67f24d1cddcd57be824b34033bf6339b\",\"dweb:/ipfs/QmR4yJqDxVzrtpkkV9veV9hTukD1EqvxtB9vb7rd67rum4\"]},\"project:/contracts/features/guardians.sol\":{\"keccak256\":\"0x51f1a10cdcb3992bb4185091ece095a082877f0c862283d3faa24f6ed4bab961\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://fd0ba1af39550bc703016401f665eb7f273c5451d11d00a9325f34cf2655633b\",\"dweb:/ipfs/QmctKBcxDaC2D8j15iMuC3QCyt3mGNqMpRRSDEsFfEnmX7\"]},\"project:/contracts/features/metaTx.sol\":{\"keccak256\":\"0x7386fd072b53eb98b3c8fd92c8c6c363ba76c0989e77099b7aca67b585523868\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://6b4df696e0824b7707a4475a040bebfeccc56ddf18f705e447a489ae45ec5487\",\"dweb:/ipfs/QmR2ZZdgX22qrNmPPeS7yByRqpp3k6ifzwuqtuwRJiNphH\"]},\"project:/contracts/features/nameService.sol\":{\"keccak256\":\"0x64dc48ad5d370ecab88ba543a9bd2ca7c5df76fbe13025eee4452765cc65f9c3\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://8de04b26678b3f1b874f80cfbdf2d4b94c4fc6739e48541bc05d2f048f2cf3e3\",\"dweb:/ipfs/QmeCtdHc1JBPWjPQE4S4k2AZ7yYxcN9GaAyc6ng3jZvMz6\"]},\"project:/contracts/features/recovery.sol\":{\"keccak256\":\"0x515d366a158a2a33017d52883a80c0ea4bfd5e3add9c9000133bb28d66ce5293\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://3af0ddaed7fc3b82cccfb25ad7857ba8b304299c3b314663dde07a1f565c553d\",\"dweb:/ipfs/QmbaEAUH3JadqUjey7rmWfirvFPAVCdNhD3z76jjS8C8Ye\"]},\"project:/contracts/otpWallet.sol\":{\"keccak256\":\"0xd72cf73a490a268822faa07f39ab0864b07fea9aac101610c898a7c4501c8331\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://e2ab8d7a5e4cabd6969b3935ed8abf2c2f88213964f0556ab3edab0c6eb0c1da\",\"dweb:/ipfs/QmTyLXGRtnxyjgMrUXRQ2w2FsKSDPHp5Yhg8zTLoixnV2u\"]}},\"version\":1}",
@@ -71154,16 +71171,22 @@
           ],
           "name": "WalletRecovered",
           "type": "event"
+        },
+        "0xdc20e2090efc21d341a67c090766e2c60f65090c5b355e9276a98a7524895aaa": {
+          "anonymous": false,
+          "inputs": [],
+          "name": "TransactionValidatedEvent",
+          "type": "event"
         }
       },
       "links": {
-        "Guardians": "0x8AF0A3ADE7f8f24b58d0D54012b62d77728ed792",
-        "Recovery": "0x9485Aeb73c9a5D6d7819aDB6CEf623EeA1FAd512",
-        "NameService": "0x85f99fD9f215a9eDbfb57348c4B8f3C3dFB3C100",
-        "MetaTx": "0xeDb6BA87035a50613D300C233351C1E0B546C921"
+        "Guardians": "0x50C324d99503a09184e8D396309549f725001e6e",
+        "Recovery": "0x95F3B6903Bfe305Fdbc1F9083CA3f8C5860Bcb06",
+        "NameService": "0xb94bAa9E95FA1984e8454609534c2D77642813B9",
+        "MetaTx": "0x329b797EFd2A94B2C52C0a28dC8E096FbdACbaCd"
       },
-      "address": "0xEbCE51A9A6cD0AFA7BCB9DBd7510A3DD0aBD9907",
-      "transactionHash": "0x704e4c13ddb17cb3996d55b9a34237cf6036755766fd5da0152b8c4501fd708d"
+      "address": "0xcf329eE68C9bd32eFf2Fcee03189401B47BfBcDA",
+      "transactionHash": "0x6bc6e1e92f32a31c7af8364274ab95fd08e6b861a5a418f4e00b6149e4f6572d"
     },
     "1666700000": {
       "events": {
@@ -71453,13 +71476,13 @@
         }
       },
       "links": {
-        "Guardians": "0x7f77412acF1E616d5d7aa9C31F339bfD225CfB3D",
-        "Recovery": "0x4332f5b2Acb8D35A7E1b63145Ec1Cd157f2a52b1",
-        "MetaTx": "0x58deE0921D79aA3Cc28C3A075d586b47AD8cE7c7",
-        "NameService": "0x766CB6D60F25EdE06545Fc000BB3dC878Fb75751"
+        "Guardians": "0xf266e8F735717889B2031ae02b4A9055188D9412",
+        "Recovery": "0xFE6aBbA80d6d63718D3562C65C9C228965b1E7E9",
+        "MetaTx": "0xB041C2814dd7B5C1a621532b711DbCe73bF1A738",
+        "NameService": "0x0ea8F76E61eEFD3A8b7D38A1a1aFeB94883fFBc3"
       },
-      "address": "0x7d39b09f66a4978b33A491dffF439DAdb27AC2F0",
-      "transactionHash": "0x7426cc008c1fae3ff96079b83a533ba14ec986215fba5a2cd790a8a1b0b4b281"
+      "address": "0xE9f9adf59AFB3c66E602C9e907c3eD2Ae5E2f327",
+      "transactionHash": "0xb54e2cc64f0e1124eab80c1c7368c5b8d1950a8088e61b95db6f89863061cd58"
     },
     "1666700003": {
       "events": {
@@ -72702,7 +72725,8 @@
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2021-12-24T03:20:17.797Z",
+  "updatedAt": "2021-12-27T06:19:39.132Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {

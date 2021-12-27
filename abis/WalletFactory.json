@@ -180,7 +180,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -199,7 +200,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -212,7 +214,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -225,7 +228,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -238,7 +242,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -271,7 +276,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -300,11 +306,13 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "stateMutability": "payable",
-      "type": "receive"
+      "type": "receive",
+      "payable": true
     },
     {
       "inputs": [
@@ -455,7 +463,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -480,7 +489,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_walletImplementation\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string[2]\",\"name\":\"domain\",\"type\":\"string[2]\"}],\"name\":\"CreateWallet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"signHash\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"Debug\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenAmount\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct WalletFactory.FundToken\",\"name\":\"fundedToken\",\"type\":\"tuple\"}],\"name\":\"InitialPortfolioFunding\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"logMessage\",\"type\":\"string\"}],\"name\":\"Log\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Received\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_tokenAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"name\":\"Withdrawn\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"WALLET_CREATION\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"salt\",\"type\":\"uint256\"}],\"name\":\"computeWalletAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"resolver\",\"type\":\"address\"},{\"internalType\":\"string[2]\",\"name\":\"domain\",\"type\":\"string[2]\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"bytes32[]\",\"name\":\"rootHash\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint8\",\"name\":\"merkleHeight\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"drainAddr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"dailyLimit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"salt\",\"type\":\"uint256\"}],\"internalType\":\"struct WalletFactory.WalletConfig\",\"name\":\"config\",\"type\":\"tuple\"}],\"name\":\"createWallet\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"created\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"freeUserCap\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCreated\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"},{\"internalType\":\"string[2]\",\"name\":\"domain\",\"type\":\"string[2]\"}],\"internalType\":\"struct WalletFactory.CreateRecord[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenAmount\",\"type\":\"uint256\"}],\"internalType\":\"struct WalletFactory.FundToken[]\",\"name\":\"fundingTokens\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"oneAmount\",\"type\":\"uint256\"}],\"name\":\"initialPortfolioFunding\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"walletImplementation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"walletTokenMap\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"address payable\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"withdrawErc20\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/walletFactory.sol\":\"WalletFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":3000},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x24e0364e503a9bbde94c715d26573a76f14cd2a202d45f96f52134ab806b67b9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e12cbaa7378fd9b62280e4e1d164bedcb4399ce238f5f98fc0eefb7e50577981\",\"dweb:/ipfs/QmXRoFGUgfsaRkoPT5bxNMtSayKTQ8GZATLPXf69HcRA51\"]},\"@openzeppelin/contracts/token/ERC1155/IERC1155.sol\":{\"keccak256\":\"0x8e93de94c9062ebc94fb7e2e3929b0781ac6a2b7772e2f7a59045861c93e5be9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f920a631bf986c610fe573d3c70a2bb6f224f86f4a8550016470c7ee476c9ab5\",\"dweb:/ipfs/QmYzsyVMfnaREKHcHv5RPS8Xg5r1Q38E2SDsGBTnXeFWzb\"]},\"@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol\":{\"keccak256\":\"0xc743d2235b8854045c308d2f8f1ed88efed6c2bebf2b7a4a51ea42480c82e566\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://05e54e397a053f319187999ef4d65446a7f15f693ddd66dfaed4d856f67dac4e\",\"dweb:/ipfs/QmbGTFVdZxShg76UPcuLAXm6HBjZx3Vn6CL1eaBhV9rST1\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x61437cb513a887a1bbad006e7b1c8b414478427d33de47c5600af3c748f108da\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2c3d0973630ed74f2b5ce3944677a885dc70ec32fc83b35f55045a10224da32b\",\"dweb:/ipfs/QmbefZ5RoEZKNHXCALfh683PnaNYzKPcKMFjyY1DVAgq8A\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd\",\"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8\"]},\"@openzeppelin/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x516a22876c1fab47f49b1bc22b4614491cd05338af8bd2e7b382da090a079990\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a439187f7126d31add4557f82d8aed6be0162007cd7182c48fd934dbab8f3849\",\"dweb:/ipfs/QmRPLguRFvrRJS7r6F1bcLvsx6q1VrgjEpZafyeL8D7xZh\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0xd5fa74b4fb323776fa4a8158800fec9d5ac0fec0d6dd046dd93798632ada265f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://33017a30a99cc5411a9e376622c31fc4a55cfc6a335e2f57f00cbf24a817ff3f\",\"dweb:/ipfs/QmWNQtWTPhA7Lo8nbxbc8KFMvZwbFYB8fSeEQ3vuapSV4a\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x51b758a8815ecc9596c66c37d56b1d33883a444631a3f916b9fe65cb863ef7c4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://997ca03557985b3c6f9143a18b6c3a710b3bc1c7f189ee956d305a966ecfb922\",\"dweb:/ipfs/QmQaD3Wb62F88SHqmpLttvF6wKuPDQep2LLUcKPekeRzvz\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"project:/contracts/core/walletData.sol\":{\"keccak256\":\"0xc1ae2391bb1bb53c52c8436d919fa8f6d7775fb000bb5b8a3f34fbd2b7b60698\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://e20df2bda81e4bb09dba3d2be32ffbdebd09ae071ed5ab051b519c1640028925\",\"dweb:/ipfs/QmW6F4omNduh8RZABeqA9t15KXZQU85JkAcK4nP75G5J1J\"]},\"project:/contracts/ens/ensResolver.sol\":{\"keccak256\":\"0x7db2b039b32dbc8cf746e0cac16bf208458bb7216e35314f28385c21a4f75b92\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://41d00611a0f9008306161d65a854b81ee47ad37b9d28da1f94ad47879bf41e57\",\"dweb:/ipfs/QmSEYFxCAQ7Wg7UphxxfmAjuVdMrt4Ztz1sg9e5G3EVJ5A\"]},\"project:/contracts/ens/registrarInterface.sol\":{\"keccak256\":\"0x55b41257ea2eb984132620763014da628b30fa4111488c99d2e6a4da5a3756fa\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://94253998f0f8d0e88ad083fcd80bd15ff2cce616429f657c8635a58cb0320438\",\"dweb:/ipfs/QmZz1M4nV3R3ftn5xRJFuzYJ31zfEz1duihH6uniSKcvqo\"]},\"project:/contracts/external/create2.sol\":{\"keccak256\":\"0x61898944851391ba0541735dfddaa20842f446aa59d826192a0e042e20b88842\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://4cf3ece242fc77a36c4c0e28e23dafe6fc04f1c677cd85710ce106ec58c3fba5\",\"dweb:/ipfs/QmVXczfKpJwXiYvHYrCbxX1ZAnJAihozksUiBRJX9G2bza\"]},\"project:/contracts/external/signatureutil.sol\":{\"keccak256\":\"0xe5ed2253fdf3c1318ac0fa1e19389aa2063df7a0ceb3f30ca43c258fb7174f63\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://509c908dbf612809a436bbc87ec3b6ac1f1ce11ca6a8cac6fa62e4aa0264d4fe\",\"dweb:/ipfs/QmV131HVfKbngJPLZSWPYZwozAQDUkepF3RN7hCt5YbAj1\"]},\"project:/contracts/external/walletproxy.sol\":{\"keccak256\":\"0x1fbd1243d3cae4383e5fe35fcf62047db10ff79529491b8e12542dfcf15eac9c\",\"license\":\"LBUSL-1.1-or-later\",\"urls\":[\"bzz-raw://c760602e2506022188c5e605cdb69d1f5250a46d659aa88cd3e16cd2b13b50e6\",\"dweb:/ipfs/QmeZKyti8ZNWhor8JeiLxdKUfLAq4xjhRuBA1HTY99yEge\"]},\"project:/contracts/features/dailyLimit.sol\":{\"keccak256\":\"0x65addd602b72134024b7b6a4e9b777914647619b6ef1415c3379d01e4241e1a0\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://2144b1c91b9a106fea22a05a9b4465ca67f24d1cddcd57be824b34033bf6339b\",\"dweb:/ipfs/QmR4yJqDxVzrtpkkV9veV9hTukD1EqvxtB9vb7rd67rum4\"]},\"project:/contracts/features/guardians.sol\":{\"keccak256\":\"0x51f1a10cdcb3992bb4185091ece095a082877f0c862283d3faa24f6ed4bab961\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://fd0ba1af39550bc703016401f665eb7f273c5451d11d00a9325f34cf2655633b\",\"dweb:/ipfs/QmctKBcxDaC2D8j15iMuC3QCyt3mGNqMpRRSDEsFfEnmX7\"]},\"project:/contracts/features/metaTx.sol\":{\"keccak256\":\"0x7386fd072b53eb98b3c8fd92c8c6c363ba76c0989e77099b7aca67b585523868\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://6b4df696e0824b7707a4475a040bebfeccc56ddf18f705e447a489ae45ec5487\",\"dweb:/ipfs/QmR2ZZdgX22qrNmPPeS7yByRqpp3k6ifzwuqtuwRJiNphH\"]},\"project:/contracts/features/nameService.sol\":{\"keccak256\":\"0x64dc48ad5d370ecab88ba543a9bd2ca7c5df76fbe13025eee4452765cc65f9c3\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://8de04b26678b3f1b874f80cfbdf2d4b94c4fc6739e48541bc05d2f048f2cf3e3\",\"dweb:/ipfs/QmeCtdHc1JBPWjPQE4S4k2AZ7yYxcN9GaAyc6ng3jZvMz6\"]},\"project:/contracts/features/recovery.sol\":{\"keccak256\":\"0x515d366a158a2a33017d52883a80c0ea4bfd5e3add9c9000133bb28d66ce5293\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://3af0ddaed7fc3b82cccfb25ad7857ba8b304299c3b314663dde07a1f565c553d\",\"dweb:/ipfs/QmbaEAUH3JadqUjey7rmWfirvFPAVCdNhD3z76jjS8C8Ye\"]},\"project:/contracts/otpWallet.sol\":{\"keccak256\":\"0xd72cf73a490a268822faa07f39ab0864b07fea9aac101610c898a7c4501c8331\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://e2ab8d7a5e4cabd6969b3935ed8abf2c2f88213964f0556ab3edab0c6eb0c1da\",\"dweb:/ipfs/QmTyLXGRtnxyjgMrUXRQ2w2FsKSDPHp5Yhg8zTLoixnV2u\"]},\"project:/contracts/walletFactory.sol\":{\"keccak256\":\"0x8cd75971c7348353467e85524f576506b053f14d9485917a341896bcda3691a9\",\"license\":\"GPL-3.0-only\",\"urls\":[\"bzz-raw://4cae0e8c0b15afb51e8f06d68437290815233f40fb7ea2ae31d4cf975c09f523\",\"dweb:/ipfs/Qmaby4cN28koCk2Bng4eBTL16bCLCiu4aMexCCTx9ZqnYi\"]}},\"version\":1}",
@@ -37591,11 +37601,130 @@
           ],
           "name": "OwnershipTransferred",
           "type": "event"
+        },
+        "0x919c5e8eaa37fed5b03e09530d9e7eaf5dabd64a59fabcc1e106e6c3a9b7be1a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "wallet",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string[2]",
+              "name": "domain",
+              "type": "string[2]"
+            }
+          ],
+          "name": "CreateWallet",
+          "type": "event"
+        },
+        "0xdf999e0a2b46a4e3ddbef19e42723d54fbed4e53cd4f18d21f8f384b09499b89": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "wallet",
+              "type": "address"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "tokenAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "tokenAmount",
+                  "type": "uint256"
+                }
+              ],
+              "indexed": false,
+              "internalType": "struct WalletFactory.FundToken",
+              "name": "fundedToken",
+              "type": "tuple"
+            }
+          ],
+          "name": "InitialPortfolioFunding",
+          "type": "event"
+        },
+        "0xcf34ef537ac33ee1ac626ca1587a0a7e8e51561e5514f8cb36afa1c5102b3bab": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "logMessage",
+              "type": "string"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        },
+        "0x88a5966d370b9919b20f3e2c13ff65706f196a4e32cc2c12bf57088f88525874": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Received",
+          "type": "event"
+        },
+        "0xc4c505caef12dcdaeed94682f15951aec519a413367f049d55af5861129950d0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "_to",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "_tokenAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "success",
+              "type": "bool"
+            }
+          ],
+          "name": "Withdrawn",
+          "type": "event"
         }
       },
       "links": {},
-      "address": "0xE540A2A0aF81A28d401F12a0a0c3e9E7C46aba5f",
-      "transactionHash": "0x8c88849fe92feda4a30f9b51721b112a96a7144b0f5e2e673987b9daa96b0f9a"
+      "address": "0xFE8F739586e5056Dfe7B01eb4F3ac58B9D03E455",
+      "transactionHash": "0x44d97f9add914addbd25556708eed73a242acbf0abd607b6c2bc8bcf6fb2fd2f"
     },
     "1666700000": {
       "events": {
@@ -37768,11 +37897,117 @@
           ],
           "name": "WithdrawnEvent",
           "type": "event"
+        },
+        "0x919c5e8eaa37fed5b03e09530d9e7eaf5dabd64a59fabcc1e106e6c3a9b7be1a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "wallet",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string[2]",
+              "name": "domain",
+              "type": "string[2]"
+            }
+          ],
+          "name": "CreateWallet",
+          "type": "event"
+        },
+        "0xdf999e0a2b46a4e3ddbef19e42723d54fbed4e53cd4f18d21f8f384b09499b89": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "wallet",
+              "type": "address"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "tokenAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "tokenAmount",
+                  "type": "uint256"
+                }
+              ],
+              "indexed": false,
+              "internalType": "struct WalletFactory.FundToken",
+              "name": "fundedToken",
+              "type": "tuple"
+            }
+          ],
+          "name": "InitialPortfolioFunding",
+          "type": "event"
+        },
+        "0x88a5966d370b9919b20f3e2c13ff65706f196a4e32cc2c12bf57088f88525874": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Received",
+          "type": "event"
+        },
+        "0xc4c505caef12dcdaeed94682f15951aec519a413367f049d55af5861129950d0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "_to",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "_tokenAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "success",
+              "type": "bool"
+            }
+          ],
+          "name": "Withdrawn",
+          "type": "event"
         }
       },
       "links": {},
-      "address": "0x4556b8f2B4D3DE804AC9F8A72D2c5246C835dD97",
-      "transactionHash": "0x05ee7fa348effe454417fcbd745f7fd70ef23f8363dceeab9ed38c1a32f83d60"
+      "address": "0xF03f1224E000EC16827d1e79326fBbFbd0f913bB",
+      "transactionHash": "0xfa6df8c86d550f0d9a9883932839ca2ab4a111f3e1f7c41eaca24c6285dfd962"
     },
     "1666700003": {
       "events": {
@@ -38046,7 +38281,8 @@
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2021-12-24T03:20:17.994Z",
+  "updatedAt": "2021-12-27T06:19:39.054Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {
