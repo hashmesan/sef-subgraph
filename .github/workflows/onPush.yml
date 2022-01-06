@@ -1,9 +1,6 @@
 name: Deploy to heroku for Staging
 
-on:
-  push:
-    branches-ignore:
-      - main
+on: push
 
 jobs:
   build:
