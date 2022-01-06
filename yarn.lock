@@ -397,10 +397,10 @@
   dependencies:
     assemblyscript "git+https://github.com/AssemblyScript/assemblyscript.git#v0.6"
 
-"@no-bank/contracts@^0.0.27":
-  version "0.0.27"
-  resolved "https://npm.pkg.github.com/download/@no-bank/contracts/0.0.27/b77093e3f0fd36a963d5ceb0b3973f7d702a9de58269c19bfcbeb6666510c80f#17f9f1fb8a044b51cff7ae604aef26e539abdda1"
-  integrity sha512-ee5/YoJsGQmW5YoZdLYsDIkouwUEARx4XbmmVYPV+gVUGnr7RxrqFiGNJepAmdIxuWohAcyI/nr36cXIX96iog==
+"@no-bank/contracts@^0.0.34":
+  version "0.0.34"
+  resolved "https://npm.pkg.github.com/download/@no-bank/contracts/0.0.34/e76cdb4d473b102c6c8c813b66df1ffa28d3e55968e742d9752c9dab400326f0#22e780d4f488704680ce6dbd947f287f3214c59f"
+  integrity sha512-euwkH4l6H7IAfstVzxVS19jVQ4r3fZyv5iP6eVAtdPKgoPtsKzblWS5LgHgnHyMEK9iSEDnK2InEoqfPte+NJg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -422,11 +422,6 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
-
-"@openzeppelin/contracts@^4.0.0":
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.3.2.tgz#ff80affd6d352dbe1bbc5b4e1833c41afd6283b6"
-  integrity sha512-AybF1cesONZStg5kWf6ao9OlqTZuPqddvprc0ky7lrUVOjXeKpmQ2Y9FK+6ygxasb+4aic4O5pneFBfwVsRRRg==
 
 "@protobufjs/utf8@^1.1.0":
   version "1.1.0"

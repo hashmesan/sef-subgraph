@@ -7,13 +7,14 @@
     "codegen": "graph codegen",
     "build": "graph build",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ bmgalego/harmony-tokens-subgraph",
-    "run-local": "yarn remove-local && yarn codegen && yarn build && yarn create-local && yarn deploy-local",
     "remove-local": "graph remove --node http://localhost:8020/ nobank-wallet-subgraph",
     "create-local": "graph create --node http://localhost:8020/ nobank-wallet-subgraph",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 nobank-wallet-subgraph",
     "remove-harmony": "graph remove --node https://graph.t.hmny.io:8020 nobank-wallet-subgraph",
     "create-harmony": "graph create --node https://graph.t.hmny.io:8020 nobank-wallet-subgraph",
-    "deploy-harmony": "graph deploy --node https://graph.t.hmny.io:8020 --ipfs http://graph.t.hmny.io:5001 nobank-wallet-subgraph"
+    "deploy-harmony": "graph deploy --node https://graph.t.hmny.io:8020 --ipfs http://graph.t.hmny.io:5001 nobank-wallet-subgraph",
+    "run-local": "yarn remove-local && yarn codegen && yarn build && yarn create-local && yarn deploy-local",
+    "docker-up-testnet": "npx docker-compose --file docker-compose-testnet.yml up -d"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.20.0",
@@ -23,7 +24,7 @@
     "typescript": "^4.0.0",
     "prettier": "^2.5.1",
     "eslint-config-prettier": "^8.3.0",
-    "@no-bank/contracts": "^0.0.27"
+    "@no-bank/contracts": "^0.0.34"
   },
   "dependencies": {
     "ethers": "^5.4.7",
