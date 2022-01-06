@@ -4,14 +4,13 @@ import {
   Transaction,
   WalletBalance,
   Transfer as TransferEntity,
-  TransferSummary,
+  TransferSummary
 } from "../../generated/schema";
 import {
   TransactionExecuted,
   Deposit,
-  Invoked,
+  Invoked
 } from "../../generated/templates/WalletTemplate/TOTPWallet";
-import { TransactionExecuted as TransactionExecutedOld } from "../../generated/templates/OldWallet/TOTPWallet";
 import { getSummary } from "../entities";
 import { Address, BigDecimal, BigInt, Bytes } from "@graphprotocol/graph-ts";
 import { Transfer } from "../../generated/ERC20/ERC20";
@@ -33,23 +32,11 @@ export function onMetaTransaction(event: TransactionExecuted): void {
   tx.data = event.transaction.input;
   tx.gasUsed = event.transaction.gasUsed;
   tx.gasPrice = event.transaction.gasPrice;
-  //   tx.refundAddress = event.params.refundAddress;
-  //   tx.refundFee = event.params.refundFee;
   tx.metaSuccess = event.params.success;
-  tx.isMeta = true;
   tx.wallet = tx.to.toHex();
 
   var summary = getSummary();
   summary.txCount = summary.txCount.plus(BigInt.fromI32(1));
-  var feePaid = event.transaction.gasPrice
-    .toBigDecimal()
-    .div(BIG_DECIMAL_1E18)
-    .times(event.transaction.gasUsed.toBigDecimal());
-  //   var refundFee = event.params.refundFee.toBigDecimal().div(BIG_DECIMAL_1E18);
-  summary.feePaid.plus(feePaid);
-  //   summary.feeCollected.plus(refundFee);
-  summary.save();
-  //var decoded = getFunction(event.transaction.input.toHex());
 
   tx.save();
 }
@@ -123,7 +110,7 @@ export function handleERC20Transfer(transfer: Transfer): void {
   log.info("erc20transfer lookup {} value={} found={}", [
     transfer.params.from.toHex(),
     transfer.params.value.toString(),
-    wallet.id,
+    wallet.id
   ]);
 
   if (wallet != null) {
